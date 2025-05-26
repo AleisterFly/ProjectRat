@@ -28,24 +28,21 @@
 
     <script>
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycbzSSW8dFQn29zJPx9p4PKpeKaHtcVICVJwAJI4f_X09ENSV1Y8m9Nn2G8CjWqztviKN/exec"; // <-- вставь сюда свой URL
+        "https://script.google.com/macros/s/AKfycbzSSW8dFQn29zJPx9p4PKpeKaHtcVICVJwAJI4f_X09ENSV1Y8m9Nn2G8CjWqztviKN/exec";
       const form = document.getElementById("contactForm");
       const status = document.getElementById("formStatus");
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const formData = new FormData(form);
-        const plainData = Object.fromEntries(formData.entries());
 
         try {
           const response = await fetch(scriptURL, {
             method: "POST",
-            body: JSON.stringify(plainData),
-            headers: { "Content-Type": "application/json" },
+            body: formData,
           });
 
-          const result = await response.json();
-          if (result.result === "success") {
+          if (response.ok) {
             status.textContent = "Форма успешно отправлена!";
             form.reset();
           } else {
