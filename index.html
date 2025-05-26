@@ -2,25 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project K.R.Y.S.A. – Login</title>
     <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
   </head>
   <body>
-    <div class="container">
-      <form
-        method="post"
-        action="https://script.google.com/macros/s/AKfycbwewWn1JCFDSQend3MmqCYJ3-3Cr2v08Sfyzb66ve9K12dse4S_u5hWoF6jQ9utgz9o/exec"
-        name="contact-form"
-      >
-        <h4>Contact Us</h4>
-        <input type="text" name="your-name" placeholder="Name" />
-        <input type="text" name="your-number" placeholder="Number" />
-        <input type="email" name="your-email" placeholder="Email" />
-        <textarea name="message" rows="7" placeholder="Your Message">
-        </textarea>
-        <input type="submit" value="Submit" id="submit" />
-      </form>
+    <div class="wrapper">
+      <div class="form-box">
+        <div class="form-content">
+          <h1>ПРОЕКТ К.Р.Ы.С.А.</h1>
+          <p class="subtitle">
+            Комплексное Ретроспективное Изучение Социальной Адаптации
+          </p>
+          <form
+            method="post"
+            action="https://script.google.com/macros/s/AKfycbwewWn1JCFDSQend3MmqCYJ3-3Cr2v08Sfyzb66ve9K12dse4S_u5hWoF6jQ9utgz9o/exec"
+            name="contact-form"
+          >
+            <input
+              type="text"
+              name="your-name"
+              placeholder="Имя пользователя"
+            />
+            <input
+              type="text"
+              name="your-number"
+              placeholder="Номер телефона"
+            />
+            <input type="email" name="your-email" placeholder="Email" />
+            <textarea
+              name="message"
+              rows="7"
+              placeholder="Твоё сообщение"
+            ></textarea>
+            <button class="login-btn" type="submit">
+              Присоединиться к эксперименту
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
