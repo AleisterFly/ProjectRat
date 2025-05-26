@@ -3,62 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <form id="contactForm">
-      <label
-        >Имя:<br />
-        <input type="text" name="name" required /> </label
-      ><br /><br />
-
-      <label
-        >Email:<br />
-        <input type="email" name="email" required /> </label
-      ><br /><br />
-
-      <label
-        >Сообщение:<br />
-        <textarea name="message" required></textarea></label
-      ><br /><br />
-
-      <button type="submit">Отправить</button>
-      <div id="formStatus"></div>
-    </form>
-
-    <script>
-      const scriptURL =
-        "https://script.google.com/macros/s/AKfycbwND0Y3KNyvzyW2f8E4mAkOzrYa7o2fIhmrF_hFDHxZLstS6Wd-epdo1Tz1UzoMY9LvhA/exec";
-      const form = document.getElementById("contactForm");
-      const status = document.getElementById("formStatus");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const jsonData = JSON.stringify(Object.fromEntries(formData.entries()));
-
-        try {
-          const response = await fetch(scriptURL, {
-            method: "POST",
-            body: jsonData,
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-
-          const result = await response.json();
-
-          if (result.result === "success") {
-            status.textContent = "Форма успешно отправлена!";
-            form.reset();
-          } else {
-            status.textContent = "Ошибка при отправке данных.";
-          }
-        } catch (error) {
-          status.textContent = "Сервер не отвечает.";
-          console.error(error);
-        }
-      });
-    </script>
+    <div class="container">
+      <form
+        method="post"
+        action="https://script.google.com/macros/s/AKfycbwewWn1JCFDSQend3MmqCYJ3-3Cr2v08Sfyzb66ve9K12dse4S_u5hWoF6jQ9utgz9o/exec"
+        name="contact-form"
+      >
+        <h4>Contact Us</h4>
+        <input type="text" name="your-name" placeholder="Name" />
+        <input type="text" name="your-number" placeholder="Number" />
+        <input type="email" name="your-email" placeholder="Email" />
+        <textarea name="message" rows="7" placeholder="Your Message">
+        </textarea>
+        <input type="submit" value="Submit" id="submit" />
+      </form>
+    </div>
   </body>
 </html>

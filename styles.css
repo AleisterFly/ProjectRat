@@ -1,51 +1,45 @@
-body {
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #000;
-  color: #fff; /* чтобы текст был читаем */
+  font-family: "poppins", sans-serif;
+  font-size: 18px;
+}
+body {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
 }
-
 .container {
-  background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  padding: 30px;
+  border: 1px solid #eeeeee;
   border-radius: 10px;
-  padding: 2rem;
-  max-width: 700px;
-  width: 90%;
-  box-sizing: border-box;
+  background-color: #003b5b;
 }
-
-h1 {
-  text-align: center;
-  color: #2b2d42;
-  margin-bottom: 1.5rem;
+h4 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: white;
 }
-
-iframe {
+input {
   width: 100%;
-  height: 700px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+textarea {
+  width: 100%;
+  padding: 10px;
+}
+#submit {
   border: none;
-  border-radius: 8px;
-  background: #f9f9f9;
+  background-color: orangered;
+  color: white;
+  width: 200px;
+  margin-top: 10px;
+  border-radius: 5px;
 }
-
-@media (max-width: 768px) {
-  iframe {
-    height: 600px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 1rem;
-  }
-
-  iframe {
-    height: 500px;
-  }
+#submit:hover {
+  background-color: #333333;
 }
