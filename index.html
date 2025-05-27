@@ -7,9 +7,10 @@
   </head>
   <body>
     <div class="wrapper">
+      <!-- Обычная форма -->
       <div class="form-box">
         <div class="form-content">
-          <h1>ПРОЕКТ К.Р.Ы.С.А.</h1>
+          <h1>ПРОЕКТ К.Р.Ы.С.А. <br />РЕГИСТРАЦИЯ</h1>
           <p class="subtitle">
             Комплексное Ретроспективное Изучение Социальной Адаптации
           </p>
@@ -17,6 +18,7 @@
             method="post"
             action="https://script.google.com/macros/s/AKfycbwewWn1JCFDSQend3MmqCYJ3-3Cr2v08Sfyzb66ve9K12dse4S_u5hWoF6jQ9utgz9o/exec"
             name="contact-form"
+            onsubmit="moveFormsLeft(event)"
           >
             <input
               type="text"
@@ -40,6 +42,51 @@
           </form>
         </div>
       </div>
+
+      <!-- Бумажная форма -->
+      <div class="paper paper_form">
+        <div class="paper_content">
+          <p class="paper_subtitle">
+            Я, ниже подписавшийся, добровольно вступаю в проект К.Р.Ы.С.А.,
+            осознавая все возможные странности и неожиданности этого
+            эксперимента. Я обещаю сохранять ясность ума, проявлять смелость, не
+            задавать лишних вопросов и следовать указаниям куратора. Пусть
+            крысиные тропы приведут меня туда, где ещё не ступала нога человека…
+          </p>
+          <form method="post" action="#" name="paper-contact-form">
+            <button class="paper_btn" type="submit">Подписать контракт</button>
+          </form>
+        </div>
+      </div>
     </div>
+    <script>
+      function moveFormsLeft(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+          method: form.method,
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Данные отправлены успешно", data);
+            form.reset();
+
+            // Анимация сдвига форм
+            document.querySelector(".form-box").style.transform =
+              "translateX(-350px)";
+            document.querySelector(".paper_form").style.transform =
+              "translateX(-350px)";
+
+            // Можно показать сообщение пользователю
+          })
+          .catch((error) => {
+            console.error("Ошибка при отправке", error);
+          });
+      }
+    </script>
   </body>
 </html>
