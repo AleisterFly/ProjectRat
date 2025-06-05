@@ -38,7 +38,7 @@ body {
   }
   .form-wrapper {
     margin-right: 0;
-    width: 90%; /* чтобы на смартфонах не вылазило */
+    width: 95%; /* чтобы на смартфонах не вылазило */
     max-width: 809px; /* сохраняем максимальную ширину */
   }
 }
@@ -48,14 +48,6 @@ body {
   width: 60%;
   height: 90%;
   text-align: center;
-  /* padding-top: 70px;
-  padding-bottom: 70px;
-  padding-left: 170px;
-  padding-right: 170px; */
-  /* margin-top: 70px;
-  margin-bottom: 70px;
-  margin-left: 170px;
-  margin-right: 170px; */
   justify-content: center;
   position: relative;
   display: grid;
