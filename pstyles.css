@@ -9,7 +9,7 @@
 body {
   background: url("media/rat_main_back.png") center/cover no-repeat;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, sans-serif;
@@ -24,11 +24,23 @@ body {
   background: url("media/reg_form.png") center/100% 100% no-repeat;
   border: 2px solid #7a6a38;
   padding: 24px;
+  margin-right: 140px;
   border-radius: 4px;
   align-items: center;
   justify-content: center;
   position: relative;
   display: flex;
+}
+
+@media (max-width: 900px) {
+  body {
+    justify-content: center;
+  }
+  .form-wrapper {
+    margin-right: 0;
+    width: 90%; /* чтобы на смартфонах не вылазило */
+    max-width: 809px; /* сохраняем максимальную ширину */
+  }
 }
 
 /* --- шапка: логотип + заголовок --- */
