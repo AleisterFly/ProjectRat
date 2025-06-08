@@ -4,11 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Проект К.Р.Ы.С.А. — Регистрация</title>
-    <link rel="stylesheet" href="pstyles.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="form-wrapper">
-      <form class="registration-form">
+      <form
+        class="registration-form"
+        id="registration-form"
+        method="post"
+        action="https://script.google.com/macros/s/AKfycbwewWn1JCFDSQend3MmqCYJ3-3Cr2v08Sfyzb66ve9K12dse4S_u5hWoF6jQ9utgz9o/exec"
+        name="contact-form"
+      >
         <div class="header">
           <div class="rat_logo">
             <img class="logo" src="media/rat_logo.png" alt="Логотип КРЫСА" />
@@ -31,8 +37,20 @@
             />
           </div>
           <div class="reg_inputs">
-            <input type="text" placeholder="Ник" required />
-            <input type="text" placeholder="Телеграмм" required />
+            <input
+              name="your_name"
+              type="text"
+              placeholder="Ник"
+              autocomplete="off"
+              required
+            />
+            <input
+              name="your_telegram"
+              type="text"
+              placeholder="Телеграмм"
+              autocomplete="off"
+              required
+            />
           </div>
           <div class="footer-note">
             *Нажимая кнопку «Присоединиться к эксперименту», ты подтверждаешь,
@@ -43,6 +61,14 @@
           <button type="submit"></button>
         </div>
       </form>
+      <div id="form-loader">
+        <img src="media/rat-loader.gif" alt="Загрузка..." />
+      </div>
     </div>
+    <div class="paper-hover-zone">
+      <div class="paper-contract"></div>
+    </div>
+
+    <script src="main.js"></script>
   </body>
 </html>
