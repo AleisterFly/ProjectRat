@@ -175,19 +175,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* занимает всю высоту формы */
+  height: 100%;
   font-size: 28px;
   color: #cab168;
   text-align: center;
   font-family: "Garamond", serif;
 }
 
+/* КОНТРАКТ */
+
 .paper-hover-zone {
   position: fixed;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
-  width: 80px; /* зона для наведения мыши */
+  width: 80px;
   height: 912px;
   z-index: 10;
 }
@@ -195,7 +197,7 @@ body {
 .paper-contract {
   position: absolute;
   top: 50%;
-  right: -600px;
+  right: -585px;
   transform: translateY(-50%);
   width: 687px;
   height: 912px;
@@ -208,4 +210,31 @@ body {
 
 .paper-hover-zone:hover .paper-contract {
   right: 0;
+}
+
+@media (max-width: 768px) {
+  .paper-hover-zone {
+    top: auto;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 100%;
+    height: 80px;
+  }
+
+  .paper-contract {
+    top: auto;
+    bottom: -510px;
+    left: 50%;
+    transform: translateX(-50%) translateX(0%);
+    transition: bottom 0.4s ease;
+    width: 435px;
+    height: 578px;
+    background: url("media/paper_frame_mobile.png") no-repeat center;
+    background-size: contain; /* ← ключевая строка */
+  }
+
+  .paper-hover-zone:hover .paper-contract {
+    bottom: 0;
+  }
 }
