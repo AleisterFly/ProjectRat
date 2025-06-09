@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Ошибка при отправке", error);
         loader.style.display = "none";
         form.innerHTML =
-          "<p class='error-message'>Ошибка. Попробуйте снова.</p>";
+          "<p class='error-message'>Не удалось вас зарегистрировать.<br><br>Свяжитесь пожалуйста с организатором турнира: <br><br>@A_l_i_o_t<br>@pim_maf</p>";
       });
   });
 

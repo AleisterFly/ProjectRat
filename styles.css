@@ -160,13 +160,13 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: none; /* скрыт по умолчанию */
+  display: none;
   z-index: 10;
 }
 
 #form-loader img {
-  width: 256px; /* адаптируйте под вашу гифку */
-  height: 256px;
+  width: 180px;
+  height: 239px;
   display: block;
 }
 
