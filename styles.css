@@ -121,7 +121,7 @@ body {
   margin-bottom: 20px;
   line-height: 1.3;
   text-align: left;
-  background: url("media/text_color.png") center/cover;
+  background: url("media/color_main_texture.png") center/cover;
   -webkit-background-clip: text;
   color: transparent;
 }
