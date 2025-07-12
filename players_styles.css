@@ -26,6 +26,13 @@ body {
   display: flex;
 }
 
+.show_match {
+  margin-top: 50px;
+  margin-left: -50px;
+  height: 250px;
+  display: flex;
+}
+
 .small_grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -33,7 +40,7 @@ body {
   justify-content: flex-end;
   align-items: flex-end;
   margin-top: 60px;
-  padding-left: 270px;
+  padding-left: 220px;
 }
 
 .big_grid {
