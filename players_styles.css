@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("media/players_back.png") center/cover no-repeat;
+  min-height: 100vh;
+  font-family: "Garamond", serif;
+  color: #cab168;
+  position: relative;
+}
+
+.header {
+  left: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  padding-left: 80px;
+}
+
+.rat_flag {
+  height: 330px;
+  display: flex;
+}
+
+.small_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: fit-content;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 60px;
+  padding-left: 270px;
+}
+
+.big_grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  max-width: fit-content;
+  padding-left: 80px;
+}
+
+.card {
+  height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
