@@ -1,66 +1,109 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Проект К.Р.Ы.С.А. — Регистрация</title>
-    <link rel="stylesheet" href="players_styles.css" />
-  </head>
-  <body>
-    <div class="header">
-      <img class="rat_flag" src="media/players_flag.png" alt="Флаг">
-      <img class="show_match" src="media/players_title.png" alt="ШОУ-МАТЧ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Проект К.Р.Ы.С.А. — Регистрация</title>
+  <link rel="stylesheet" href="players_styles.css" />
+</head>
+<body>
+<div class="header">
+  <img class="rat_flag" src="media/players_flag.png" alt="Флаг">
+  <img class="show_match" src="media/players_title.png" alt="ШОУ-МАТЧ">
 
-      <div class="small_grid">
-        <img class="card" src="media/players/hds.png" alt="Tile 1">
-        <img class="card" src="media/players/hds.png" alt="Tile 2">
-        <img class="card" src="media/players/hds.png" alt="Tile 3">
-        <img class="card" src="media/players/hds.png" alt="Tile 4">
-      </div>
-    </div>
+  <div class="small_grid" id="small_grid"></div>
+</div>
 
-    <div class="big_grid">
-      <img class="card" src="media/players/hds.png" alt="Tile 1">
-      <img class="card" src="media/players/hds.png" alt="Tile 2">
-      <img class="card" src="media/players/hds.png" alt="Tile 3">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-      <img class="card" src="media/players/hds.png" alt="Tile 1">
-      <img class="card" src="media/players/hds.png" alt="Tile 2">
-      <img class="card" src="media/players/hds.png" alt="Tile 3">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
+<div class="big_grid" id="big_grid"></div>
 
-      <img class="card" src="media/players/hds.png" alt="Tile 1">
-      <img class="card" src="media/players/hds.png" alt="Tile 2">
-      <img class="card" src="media/players/hds.png" alt="Tile 3">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-      <img class="card" src="media/players/hds.png" alt="Tile 1">
-      <img class="card" src="media/players/hds.png" alt="Tile 2">
-      <img class="card" src="media/players/hds.png" alt="Tile 3">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
+<script>
+  // 🔹 1. Массив картинок для small_grid
+  const smallGridImages = [
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png"
+  ];
 
-      <img class="card" src="media/players/hds.png" alt="Tile 1">
-      <img class="card" src="media/players/hds.png" alt="Tile 2">
-      <img class="card" src="media/players/hds.png" alt="Tile 3">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-      <img class="card" src="media/players/hds.png" alt="Tile 1">
-      <img class="card" src="media/players/hds.png" alt="Tile 2">
-      <img class="card" src="media/players/hds.png" alt="Tile 3">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
+  const bigGridImages = [
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+    "media/players/hds.png",
+  ];
 
-      <img class="card" src="media/players/hds.png" alt="Tile 1">
-      <img class="card" src="media/players/hds.png" alt="Tile 2">
-      <img class="card" src="media/players/hds.png" alt="Tile 3">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-      <img class="card" src="media/players/hds.png" alt="Tile 1">
-      <img class="card" src="media/players/hds.png" alt="Tile 2">
-      <img class="card" src="media/players/hds.png" alt="Tile 3">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-      <img class="card" src="media/players/hds.png" alt="Tile 4">
-    </div>
+  const smallGrid = document.getElementById('small_grid');
 
-    <script src="main.js"></script>
-  </body>
+  smallGridImages.forEach(src => {
+    smallGrid.innerHTML += `
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img class="card_img" src="${src}" alt="Лицевая">
+            </div>
+            <div class="card-back">
+              <img class="card_img" src="media/players/backcard.png" alt="Рубашка">
+            </div>
+          </div>
+        </div>
+      `;
+  });
+
+  const bigGrid = document.getElementById('big_grid');
+
+  bigGridImages.forEach(src => {
+    bigGrid.innerHTML += `
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img class="card_img" src="${src}" alt="Лицевая">
+            </div>
+            <div class="card-back">
+              <img class="card_img" src="media/players/backcard.png" alt="Рубашка">
+            </div>
+          </div>
+        </div>
+      `;
+  });
+
+  document.addEventListener('click', e => {
+    const card = e.target.closest('.card');
+    if (card) {
+      card.classList.toggle('flipped');
+    }
+  });
+</script>
+</body>
 </html>
