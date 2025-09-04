@@ -1,4 +1,3 @@
-<!-- final_vote.html -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,18 +8,22 @@
 </head>
 <body>
   <div class="header">
-    <img class="rat_flag"  src="media/players_flag.png" alt="Флаг">
-    <img class="show_match" src="media/final_title.png"  alt="ФИНАЛЬНОЕ ГОЛОСОВАНИЕ">
+    <img class="rat_flag"  src="media/players_flag.png"  alt="Флаг">
+    <img class="show_match" src="media/final_title.png"   alt="ФИНАЛЬНОЕ ГОЛОСОВАНИЕ">
   </div>
 
   <main class="stage" aria-label="Финальное голосование">
     <div id="teamsGrid" class="teams-grid"></div>
+
+    <button class="toggle-btn" id="toggleBtn" aria-pressed="false">
+      <img src="media/teams/off_button.png" alt="Переключатель переворота">
+    </button>
   </main>
 
   <script>
     const teams = [
       "KrysoLovy","Shadowtail","Kryssent","vRATdaTEAM","RATvengers",
-      "Krystrazhy","Krystrazhy","KNK","CheeseOrDie","KrysyDezora"
+      "Krystrazhy","KNK","CheeseOrDie","KrysyDezora", "Krysiuki"
     ];
 
     const players = Array.from({length: 10}, (_, i) => `media/players/card ${i+1}.png`);
@@ -41,9 +44,21 @@
       `);
     });
 
+    let flipEnabled = false;
+
+    const btn = document.getElementById('toggleBtn');
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      flipEnabled = !flipEnabled;
+      btn.setAttribute('aria-pressed', String(flipEnabled));
+      btn.querySelector('img').src = flipEnabled
+        ? 'media/teams/on_button.png'
+        : 'media/teams/off_button.png';
+    });
+
     document.addEventListener('click', e => {
       const c = e.target.closest('.card');
-      if (!c) return;
+      if (!c || !flipEnabled) return;
       c.classList.toggle('flipped');
     });
   </script>
