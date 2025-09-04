@@ -40,16 +40,16 @@
       { name: "CheeseOrDie", pos: "card-8"  },
       { name: "KrysyDezora", pos: "card-9"  },
       { name: "Krysiuki",    pos: "card-10" }
-    ]
+    ];
 
     const defenses = [
       { pos: "defense-1", value: "4.7" },
       { pos: "defense-2", value: "3.2" },
       { pos: "defense-3", value: "1.1" }
-    ]
+    ];
 
-    const cardsContainer = document.getElementById('cards')
-    const defensesContainer = document.getElementById('defenses')
+    const cardsContainer = document.getElementById('cards');
+    const defensesContainer = document.getElementById('defenses');
 
     teams.forEach(t => {
       cardsContainer.innerHTML += `
@@ -63,8 +63,8 @@
             </div>
           </div>
         </div>
-      `
-    })
+      `;
+    });
 
     defenses.forEach(d => {
       defensesContainer.innerHTML += `
@@ -72,34 +72,55 @@
           <img src="media/teams/defense.png" alt="defense ${d.pos}">
           <span class="defense-value">${d.value}</span>
         </div>
-      `
-    })
+      `;
+    });
 
-    let flipEnabled = false
+    let flipEnabled = false;
 
-    const btn = document.getElementById('toggleBtn')
+    const btn = document.getElementById('toggleBtn');
     btn.addEventListener('click', e => {
-      e.stopPropagation()
-      flipEnabled = !flipEnabled
-      btn.setAttribute('aria-pressed', String(flipEnabled))
+      e.stopPropagation();
+      flipEnabled = !flipEnabled;
+      btn.setAttribute('aria-pressed', String(flipEnabled));
       btn.querySelector('img').src = flipEnabled
         ? 'media/teams/on_button.png'
-        : 'media/teams/off_button.png'
-    })
+        : 'media/teams/off_button.png';
+    });
+
+    const toBwPath = p => p.replace(/\/players\//, '/players/bw/');
 
     document.addEventListener('click', e => {
-      const card = e.target.closest('.card')
-      if (!card || !flipEnabled) return
-      card.classList.toggle('flipped')
-    })
+      const card = e.target.closest('.card');
+      if (!card || !flipEnabled) return;
+
+      const backImg = card.querySelector('.card-back img');
+      const state   = card.dataset.state || 'team';
+
+      const colorSrc = backImg.getAttribute('data-color') || backImg.src;
+      const bwSrc    = backImg.getAttribute('data-bw')    || toBwPath(colorSrc);
+
+      if (state === 'team') {
+        card.classList.add('flipped');
+        card.dataset.state = 'player-color';
+
+      // } else if (state === 'player-color') {
+      //   backImg.src = bwSrc;
+      //   card.dataset.state = 'player-bw';
+
+      } else {
+        card.classList.remove('flipped');
+        backImg.src = colorSrc;
+        card.dataset.state = 'team';
+      }
+    });
 
     document.querySelectorAll('.defense').forEach(el => {
       el.addEventListener('click', e => {
-        e.stopPropagation()
-        if (!flipEnabled) return
-        el.classList.toggle('active')
-      })
-    })
+        e.stopPropagation();
+        if (!flipEnabled) return;
+        el.classList.toggle('active');
+      });
+    });
   </script>
 </body>
 </html>
