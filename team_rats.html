@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Крысы</title>
+  <link rel="stylesheet" href="team_rats_styles.css" />
+</head>
+<body>
+  <div class="header">
+    <img class="rat_flag" src="media/players_flag.png" alt="Флаг">
+    <img class="show_match" src="media/team_rats_title.png" alt="КРЫСЫ">
+  </div>
+
+  <main class="stage" aria-label="Крысы — три раунда">
+    <img class="rounds-banner" src="media/rounds.png" alt="1-й раунд → 2-й раунд → Финал">
+
+    <div class="rounds">
+      <section class="round">
+        <div class="round-col" id="round1"></div>
+      </section>
+
+      <section class="round">
+        <div class="round-col" id="round2"></div>
+      </section>
+
+      <section class="round">
+        <div class="round-col" id="round3"></div>
+      </section>
+    </div>
+
+    <button class="toggle-btn" id="toggleBtn" aria-pressed="false">
+      <img src="media/teams/off_button.png" alt="Переключатель">
+    </button>
+  </main>
+
+  <script>
+    const teams = [
+      "Krystrazhy","KrysyDezora",
+      "KrysoLovy","Krysiuki",
+      "Shadowtail","Kryssent",
+      "vRATdaTeam","RATvengers",
+      "KNK","CheeseOrDie"
+    ];
+
+    const round1Cards = [
+      "media/players/card 1.png",
+      "media/players/card 2.png",
+      "media/players/card 3.png",
+      "media/players/card 4.png",
+      "media/players/card 5.png",
+      "media/players/card 6.png",
+      "media/players/card 7.png",
+      "media/players/card 8.png",
+      "media/players/card 9.png",
+      "media/players/card 10.png"
+    ];
+
+    const round2Cards = [
+      "media/players/card 11.png",
+      "media/players/card 12.png",
+      "media/players/card 13.png",
+      "media/players/card 14.png",
+      "media/players/card 15.png",
+      "media/players/card 16.png",
+      "media/players/card 17.png",
+      "media/players/card 18.png",
+      "media/players/card 19.png",
+      "media/players/card 20.png"
+    ];
+
+    const round3Cards = [
+      "media/players/card 21.png",
+      "media/players/card 22.png",
+      "media/players/card 23.png",
+      "media/players/card 24.png",
+      "media/players/card 25.png",
+      "media/players/card 26.png",
+      "media/players/card 27.png",
+      "media/players/card 28.png",
+      "media/players/card 29.png",
+      "media/players/card 30.png"
+    ];
+
+    const columns = [
+      { el: document.getElementById('round1'), cards: round1Cards },
+      { el: document.getElementById('round2'), cards: round2Cards },
+      { el: document.getElementById('round3'), cards: round3Cards }
+    ];
+
+    const toBwPath = p => p.replace(/\/players\//, '/players/bw/');
+
+    function renderColumn(container, cards) {
+      teams.forEach((teamName, i) => {
+        const backColor = cards[i] || "";
+        const backBw    = backColor ? toBwPath(backColor) : "";
+
+        container.insertAdjacentHTML('beforeend', `
+          <div class="card" data-state="team"
+               data-back-color="${backColor}"
+               data-back-bw="${backBw}">
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="media/teams/${teamName}.png" alt="${teamName}">
+              </div>
+              <div class="card-back">
+                <img src="${backColor}" alt="player_${i+1}">
+              </div>
+            </div>
+          </div>
+        `);
+      });
+    }
+
+    columns.forEach(c => renderColumn(c.el, c.cards));
+
+    let flipEnabled = false;
+    const btn = document.getElementById('toggleBtn');
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      flipEnabled = !flipEnabled;
+      btn.setAttribute('aria-pressed', String(flipEnabled));
+      btn.querySelector('img').src = flipEnabled
+        ? 'media/teams/on_button.png'
+        : 'media/teams/off_button.png';
+    });
+
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.card');
+      if (!card || !flipEnabled) return;
+
+      const state = card.dataset.state || 'team';
+      const backImg   = card.querySelector('.card-back img');
+      const colorSrc  = card.dataset.backColor || '';
+      const bwSrc     = card.dataset.backBw || '';
+
+      if (state === 'team') {
+        if (colorSrc) backImg.src = colorSrc;
+        card.classList.add('flipped');
+        card.dataset.state = 'player-color';
+      // } else if (state === 'player-color') {
+      //   if (bwSrc) backImg.src = bwSrc;
+      //   card.dataset.state = 'player-bw';
+      } else {
+        card.classList.remove('flipped');
+        if (colorSrc) backImg.src = colorSrc; // вернуть цвет на следующий показ
+        card.dataset.state = 'team';
+      }
+    });
+  </script>
+</body>
+</html>
