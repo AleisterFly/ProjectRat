@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Результаты команд</title>
-  <link rel="stylesheet" href="teams_styles.css" />
+  <link rel="stylesheet" href="rats_styles.css" />
 </head>
 <body>
   <div class="header">
     <img class="rat_flag" src="media/players_flag.png" alt="Флаг">
-    <img class="show_match" src="media/teams_title.png" alt="ШОУ-МАТЧ">
+    <img class="show_match" src="media/rats_title.png" alt="ШОУ-МАТЧ">
     <div class="small_grid" id="small_grid"></div>
   </div>
 
   <main class="results-stage" aria-label="Результаты команд">
+    <img class="free-float overlay-under" src="media/crown.png" alt="" aria-hidden="true">
+
     <img class="badge place1"   src="media/teams/1place.png"    alt="1 место">
     <img class="badge place2"   src="media/teams/2place.png"    alt="2 место">
     <img class="badge place3"   src="media/teams/3place.png"    alt="3 место">
@@ -30,16 +32,16 @@
 
   <script>
     const teams = [
-      { name: "KrysoLovy",   pos: "card-1"  },
-      { name: "Shadowtail",  pos: "card-2"  },
-      { name: "Kryssent",    pos: "card-3"  },
-      { name: "vRATdaTeam",  pos: "card-4"  },
-      { name: "RATvengers",  pos: "card-5"  },
-      { name: "Krystrazhy",  pos: "card-6"  },
-      { name: "KNK",         pos: "card-7"  },
-      { name: "CheeseOrDie", pos: "card-8"  },
-      { name: "KrysyDezora", pos: "card-9"  },
-      { name: "Krysiuki",    pos: "card-10" }
+      { name: "card 1",      pos: "card-1"  },
+      { name: "card 2",      pos: "card-2"  },
+      { name: "card 3",      pos: "card-3"  },
+      { name: "card 4",      pos: "card-4"  },
+      { name: "card 5",      pos: "card-5"  },
+      { name: "card 6",      pos: "card-6"  },
+      { name: "card 7",      pos: "card-7"  },
+      { name: "card 8",      pos: "card-8"  },
+      { name: "card 9",      pos: "card-9"  },
+      { name: "card 10",     pos: "card-10" }
     ];
 
     const defenses = [
@@ -56,7 +58,7 @@
         <div class="card ${t.pos}">
           <div class="card-inner">
             <div class="card-front">
-              <img src="media/teams/${t.name}.png" alt="${t.name}">
+              <img src="media/players/${t.name}.png" alt="${t.name}">
             </div>
             <div class="card-back">
               <img src="media/teams/backcard.png" alt="Рубашка">

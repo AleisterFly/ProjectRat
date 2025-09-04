@@ -178,3 +178,12 @@ body {
   height: auto;
   pointer-events: none;
 }
+
+.free-float {
+  position: absolute;
+  top: 45px;
+  left: 1227px;
+  height: auto;
+  pointer-events: none;
+  z-index: 1000;
+}
