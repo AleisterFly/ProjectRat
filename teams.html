@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Результаты команд</title>
+  <link rel="stylesheet" href="teams_styles.css" />
+</head>
+<body>
+  <div class="header">
+    <img class="rat_flag" src="media/players_flag.png" alt="Флаг">
+    <img class="show_match" src="media/teams_title.png" alt="ШОУ-МАТЧ">
+    <div class="small_grid" id="small_grid"></div>
+  </div>
+
+  <main class="results-stage" aria-label="Результаты команд">
+    <img class="badge place1"   src="media/teams/1place.png"    alt="1 место">
+    <img class="badge place2"   src="media/teams/2place.png"    alt="2 место">
+    <img class="badge place3"   src="media/teams/3place.png"    alt="3 место">
+    <img class="badge place46"  src="media/teams/46places.png"  alt="4–6 места">
+    <img class="badge place610" src="media/teams/610places.png" alt="6–10 места">
+
+    <div id="cards"></div>
+    <div id="defenses"></div>
+
+    <button class="toggle-btn" id="toggleBtn" aria-pressed="false">
+      <img src="media/teams/off_button.png" alt="Переключатель переворота">
+    </button>
+  </main>
+
+  <script>
+    const teams = [
+      { name: "KrysoLovy",   pos: "card-1"  },
+      { name: "Shadowtail",  pos: "card-2"  },
+      { name: "Kryssent",    pos: "card-3"  },
+      { name: "vRATdaTeam",  pos: "card-4"  },
+      { name: "RATvengers",  pos: "card-5"  },
+      { name: "Krystrazhy",  pos: "card-6"  },
+      { name: "KNK",         pos: "card-7"  },
+      { name: "CheeseOrDie", pos: "card-8"  },
+      { name: "KrysyDezora", pos: "card-9"  },
+      { name: "Krysiuki",    pos: "card-10" }
+    ]
+
+    const defenses = [
+      { pos: "defense-1", value: "4.7" },
+      { pos: "defense-2", value: "3.2" },
+      { pos: "defense-3", value: "1.1" }
+    ]
+
+    const cardsContainer = document.getElementById('cards')
+    const defensesContainer = document.getElementById('defenses')
+
+    teams.forEach(t => {
+      cardsContainer.innerHTML += `
+        <div class="card ${t.pos}">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="media/teams/${t.name}.png" alt="${t.name}">
+            </div>
+            <div class="card-back">
+              <img src="media/teams/backcard.png" alt="Рубашка">
+            </div>
+          </div>
+        </div>
+      `
+    })
+
+    defenses.forEach(d => {
+      defensesContainer.innerHTML += `
+        <div class="defense ${d.pos}" data-value="${d.value}">
+          <img src="media/teams/defense.png" alt="defense ${d.pos}">
+          <span class="defense-value">${d.value}</span>
+        </div>
+      `
+    })
+
+    let flipEnabled = false
+
+    const btn = document.getElementById('toggleBtn')
+    btn.addEventListener('click', e => {
+      e.stopPropagation()
+      flipEnabled = !flipEnabled
+      btn.setAttribute('aria-pressed', String(flipEnabled))
+      btn.querySelector('img').src = flipEnabled
+        ? 'media/teams/on_button.png'
+        : 'media/teams/off_button.png'
+    })
+
+    document.addEventListener('click', e => {
+      const card = e.target.closest('.card')
+      if (!card || !flipEnabled) return
+      card.classList.toggle('flipped')
+    })
+
+    document.querySelectorAll('.defense').forEach(el => {
+      el.addEventListener('click', e => {
+        e.stopPropagation()
+        if (!flipEnabled) return
+        el.classList.toggle('active')
+      })
+    })
+  </script>
+</body>
+</html>

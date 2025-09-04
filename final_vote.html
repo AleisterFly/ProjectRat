@@ -1,0 +1,51 @@
+<!-- final_vote.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Финальное голосование</title>
+  <link rel="stylesheet" href="final_vote_styles.css" />
+</head>
+<body>
+  <div class="header">
+    <img class="rat_flag"  src="media/players_flag.png" alt="Флаг">
+    <img class="show_match" src="media/final_title.png"  alt="ФИНАЛЬНОЕ ГОЛОСОВАНИЕ">
+  </div>
+
+  <main class="stage" aria-label="Финальное голосование">
+    <div id="teamsGrid" class="teams-grid"></div>
+  </main>
+
+  <script>
+    const teams = [
+      "KrysoLovy","Shadowtail","Kryssent","vRATdaTEAM","RATvengers",
+      "Krystrazhy","Krystrazhy","KNK","CheeseOrDie","KrysyDezora"
+    ];
+
+    const players = Array.from({length: 10}, (_, i) => `media/players/card ${i+1}.png`);
+
+    const grid = document.getElementById('teamsGrid');
+
+    teams.forEach((team, i) => {
+      const teamImg = `media/teams/${team}.png`;
+      const playerImg = players[i];
+
+      grid.insertAdjacentHTML('beforeend', `
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front"><img src="${teamImg}"   alt="${team}"></div>
+            <div class="card-back"><img  src="${playerImg}" alt="Игрок"></div>
+          </div>
+        </div>
+      `);
+    });
+
+    document.addEventListener('click', e => {
+      const c = e.target.closest('.card');
+      if (!c) return;
+      c.classList.toggle('flipped');
+    });
+  </script>
+</body>
+</html>
