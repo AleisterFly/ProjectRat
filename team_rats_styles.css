@@ -93,14 +93,16 @@ body {
 
 .toggle-btn {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  left: 470px;
+  top: 60%;
+  transform: translateY(50%);
   border: 0;
   padding: 0;
   background: transparent;
   cursor: pointer;
   z-index: 999;
 }
+
 .toggle-btn img {
   display: block;
   width: 140px;
