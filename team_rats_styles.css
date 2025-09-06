@@ -34,7 +34,7 @@ body {
   width: auto;
   margin-top: 100px;
   margin-bottom: 20px;
-  margin-left: 480px;
+  margin-left: 500px;
 }
 
 .rounds {
@@ -42,7 +42,7 @@ body {
   grid-template-columns: repeat(3, auto);
   column-gap: 100px;
   align-items: start;
-  margin-left: 400px;
+  margin-left: 420px;
   margin-top: 0px;
 }
 
