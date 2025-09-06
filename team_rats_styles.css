@@ -34,7 +34,7 @@ body {
   width: auto;
   margin-top: 70px;
   margin-bottom: 20px;
-  margin-left: 970px;
+  margin-left: 870px;
   transform: scale(1.2);
   transform-origin: top center;
 }
@@ -44,7 +44,7 @@ body {
   grid-template-columns: repeat(3, auto);
   column-gap: 100px;
   align-items: start;
-  margin-left: 890px;
+  margin-left: 790px;
   margin-top: 0px;
   transform: scale(1.2);
   transform-origin: top center;
